@@ -46,8 +46,8 @@ public class Main {
 
             }
         } else {
-            for (int i = 0; i < 500; i++) {
-                System.out.println(data.generationRandomKey());
+            for (int i = 0; i < 2000; i++) {
+                data.generationRandomKey();
             }
             data.showTranslation();
             data.show4();

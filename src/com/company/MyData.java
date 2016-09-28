@@ -3,10 +3,7 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -14,11 +11,11 @@ import java.util.stream.Stream;
  */
 public class MyData {
 
-    private int secondindex = 0, counterthreeGrams = 0;
+    private int secondindex = 0, counterthreeGrams = 0, counterthreeGrams2 = 0;
     private String text, originalText, bestText = "NULL";
     private char[] key, mainKey, chanedString;
     private final String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private Map<Character, Integer> map;
+    private Map<Character, Integer> map, mapKey;
     private HashMap<Character, Character> AutomatycalyMap;
     private Analyse analyse;
 
@@ -151,6 +148,7 @@ public class MyData {
 
     public void show4() {
         this.analyse.showBestCoeficient();
+        System.out.println(this.mainKey);
         System.out.println(this.text.length());
     }
 
@@ -175,32 +173,31 @@ public class MyData {
     public char[] generationRandomKey() {
 
         key = Arrays.copyOf(mainKey, mainKey.length);
-        for (int j = 0; j < secondindex; j++) {
+        // key = new char []{'E','K','M','F','L','G','D','Q','V','N','J','T','O','W','Y','H',' ','U','S','P','A','I','B','R','C','Z'};
+       /* for (int j = 0; j < secondindex; j++) {
 
-            if (j == secondindex - 1) {
+            if (j == secondindex -1 ) {
                 char tmp = key[j];
                 key[j] = key[j + 1];
                 key[j + 1] = tmp;
             }
         }
         secondindex++;
-        if (secondindex == 25) {
+        if (secondindex == 26) {
             secondindex = 0;
-           /* char tmp = key[5];
-            key[5] = key[20];
-            key[20] = tmp;
-             tmp = key[25];
-            key[25] = key[10];
-            key[10] = tmp;*/
-        }
+        }*/
+        random1();
+
         createNewKey();
         return key;
     }
 
     private void createNewKey() {
-
+        //  this.mapKey = new TreeMap<Character, Character>();
         for (int i = 0; i < letters.length(); i++) {
-            AutomatycalyMap.put(new Character(letters.charAt(i)), new Character(key[i]));
+            //AutomatycalyMap.put(new Character(letters.charAt(i)), new Character(key[i]));
+            AutomatycalyMap.put(new Character(key[i]), new Character(letters.charAt(i)));
+            //  mapKey.put()
         }
 
         atteckText();
@@ -217,13 +214,14 @@ public class MyData {
             chanedString[i] = AutomatycalyMap.get(new Character(this.text.charAt(i)));
         }
 
-
+        analysis(chanedString);
         if (analyse.analyseText(chanedString, key)) {
-            secondindex = 0;
+            this.secondindex = 0;
             mainKey = Arrays.copyOf(key, key.length);
+            System.out.println(mainKey);
         }
         //   System.out.println(analyse.analyseText(chanedString));
-        // analysis(chanedString);
+
     }
 
     public void showTranslation() {
@@ -241,15 +239,19 @@ public class MyData {
         int counter1 = countSubstring("AND", value);
         int counter2 = countSubstring("THE", value);
         int counter3 = countSubstring("HER", value);
-        // int counter5 = countSubstring("BRO",value);
-        int counter6 = countSubstringBE("TH", value);
-        int counter10 = countSubstringBE("HE", value);
-        int counter7 = countSubstringBE("IN", value);
-        int counter8 = countSubstringBE("ER", value);
-        int counter9 = countSubstringBE("AN", value);
-
+        int counter5 = countSubstring("THA", value);
+        int counter6 = countSubstring("ERE", value);
+        int counter10 = countSubstring("HAT", value);
+        int counter7 = countSubstring("ETH", value);
+        int counter8 = countSubstring("ENT", value);
+        int counter9 = countSubstring("NTH", value);
+        int counter11 = countSubstring("FOR", value);
+        int counter12 = countSubstring("HIS", value);
+        int counter13 = countSubstring("THI", value);
+        int counter14 = countSubstring("TER", value);
         int counter4 = counter + counter1 + counter2 + counter3 + counter6
-                + counter7 + counter8 + counter9 + counter10;
+                + counter7 + counter8 + counter9 + counter10 + counter5
+                + counter11 + counter12 + counter13 + counter14;
         if (counter4 > this.counterthreeGrams) {
             this.counterthreeGrams = counter4;
             bestText = String.valueOf(value);
@@ -275,5 +277,17 @@ public class MyData {
                     count++;
         }
         return count;
+    }
+
+
+    public void random1() {
+
+        Random random = new Random();
+        int first = random.nextInt(26);
+        int second = random.nextInt(26);
+        char tmp = key[first];
+        key[first] = key[second];
+        key[second] = tmp;
+
     }
 }

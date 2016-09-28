@@ -66,20 +66,20 @@ public class Analyse {
         for (int i = 0; i < 26; i++) {
             frequencyOfLetters.put('E', 12.7);
             frequencyOfLetters.put('T', 9.06);
-            frequencyOfLetters.put('A', 8.17);
+            frequencyOfLetters.put('I', 8.17);
             frequencyOfLetters.put('O', 7.51);
-            frequencyOfLetters.put('I', 6.97);
+            frequencyOfLetters.put('A', 6.97);
             frequencyOfLetters.put('N', 6.75);
             frequencyOfLetters.put('S', 6.33);
             frequencyOfLetters.put('H', 6.09);
             frequencyOfLetters.put('R', 5.99);
-            frequencyOfLetters.put('D', 4.25);
-            frequencyOfLetters.put('L', 4.03);
-            frequencyOfLetters.put('C', 2.78);
+            frequencyOfLetters.put('L', 4.25);
+            frequencyOfLetters.put('C', 4.03);
+            frequencyOfLetters.put('F', 2.78);
             frequencyOfLetters.put('U', 2.76);
             frequencyOfLetters.put('M', 2.41);
             frequencyOfLetters.put('W', 2.36);
-            frequencyOfLetters.put('F', 2.23);
+            frequencyOfLetters.put('D', 2.23);
             frequencyOfLetters.put('G', 2.02);
             frequencyOfLetters.put('Y', 1.97);
             frequencyOfLetters.put('P', 1.93);
