@@ -1,9 +1,8 @@
 package com.company;
 
-import java.util.Scanner;
+import com.company.Vigenere.Task2;
 
-import static com.company.Permutations.perm1;
-import static com.company.Permutations.perm2;
+import java.util.Scanner;
 
 public class Main {
 
@@ -11,7 +10,6 @@ public class Main {
         MyData data = new MyData("");
         data.readFile("D:\\ProjectPrograming\\Java\\" +
                 "FirsProgramCryptography\\src\\com\\company\\Data.txt");
-        //System.out.println(data.getText());
         System.out.println("Ручний режим - 1, Напівавтоматичний - 2");
         Scanner in = new Scanner(System.in);
         int a = in.nextInt();
@@ -20,7 +18,8 @@ public class Main {
 
             while (end != "end") {
                 end = in.nextLine();
-                System.out.println("end- кінець,swap - міняти літери,fra - частоти, swaped - замінені слова");
+                System.out.println("end- кінець,swap - міняти літери,fra - частоти, swaped - замінені слова, " +
+                        "task2 - task2, task3 - task3");
                 switch (end) {
                     case "end":
                         end = "end";
@@ -30,8 +29,6 @@ public class Main {
                         firstLetter = in.nextLine();
                         secondLetter = in.nextLine();
                         data.swapLetter(firstLetter, secondLetter);
-                        //  data.swapLetter("",secondLetter);
-                        //  data.swapLetter(firstLetter,secondLetter);
                         System.out.println("Текст");
                         data.showText();
                         break;
@@ -40,6 +37,36 @@ public class Main {
                         break;
                     case "swaped":
                         data.swapped();
+                        break;
+                    case "task2":
+                        Task2 task2 = new Task2();
+                        task2.inputText("D:\\ProjectPrograming\\Java\\" +
+                                "FirsProgramCryptography\\src\\com\\company\\Vigenere\\VigenerData.txt");
+                        Scanner inn = new Scanner(System.in);
+                        task2.startAlgorithm();
+                        System.out.println("Input length word");
+                        int length = inn.nextInt();
+                        task2.lengthWord(length);
+                        System.out.println("Input word");
+                        Scanner innn = new Scanner(System.in);
+                        String word = innn.nextLine();
+                        task2.decoderText(word);
+                        task2.showDecodetText();
+                        break;
+                    case "task3":
+                        Task2 task3 = new Task2();
+                        task3.inputText("D:\\ProjectPrograming\\Java\\" +
+                                "FirsProgramCryptography\\src\\com\\company\\Vigenere\\Vigenere2");
+                        Scanner inn2 = new Scanner(System.in);
+                        task3.startAlgorithm();
+                        System.out.println("Input length word");
+                        int length2 = inn2.nextInt();
+                        task3.lengthWord(length2);
+                        System.out.println("Input word");
+                        Scanner innn2 = new Scanner(System.in);
+                        String word2 = innn2.nextLine();
+                        task3.decoderText(word2);
+                        task3.showDecodetText();
                         break;
 
                 }

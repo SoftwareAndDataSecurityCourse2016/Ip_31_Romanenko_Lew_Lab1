@@ -37,13 +37,6 @@ public class MyData {
         this.text = this.text.replace(oldLetter, newLetter);
     }
 
-   /* public  void swapLetterAutomatycaly(){
-        while
-    }
-    /*private void oldText(){
-        this.text.p
-    }*/
-
     public void readFile(String string) {
         try (BufferedReader br = new BufferedReader(new FileReader(string))) {
 
@@ -90,8 +83,6 @@ public class MyData {
 
     public void showFrequency() {
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-
-            //System.out.println("Char " + entry.getKey() + " fraquency " + entry.getValue().floatValue()/this.text.length());
             System.out.println("Char " + entry.getKey() + " fraquency " + entry.getValue());
 
         }
@@ -173,19 +164,6 @@ public class MyData {
     public char[] generationRandomKey() {
 
         key = Arrays.copyOf(mainKey, mainKey.length);
-        // key = new char []{'E','K','M','F','L','G','D','Q','V','N','J','T','O','W','Y','H',' ','U','S','P','A','I','B','R','C','Z'};
-       /* for (int j = 0; j < secondindex; j++) {
-
-            if (j == secondindex -1 ) {
-                char tmp = key[j];
-                key[j] = key[j + 1];
-                key[j + 1] = tmp;
-            }
-        }
-        secondindex++;
-        if (secondindex == 26) {
-            secondindex = 0;
-        }*/
         random1();
 
         createNewKey();
@@ -193,9 +171,7 @@ public class MyData {
     }
 
     private void createNewKey() {
-        //  this.mapKey = new TreeMap<Character, Character>();
         for (int i = 0; i < letters.length(); i++) {
-            //AutomatycalyMap.put(new Character(letters.charAt(i)), new Character(key[i]));
             AutomatycalyMap.put(new Character(key[i]), new Character(letters.charAt(i)));
             //  mapKey.put()
         }
@@ -206,9 +182,6 @@ public class MyData {
     private void atteckText() {
 
         this.text = new String(this.originalText);
-        /*for (int i = 0; i <letters.length() ; i++) {
-            this.text = text.replace(  letters.charAt(i),AutomatycalyMap.get(new Character (  letters.charAt(i))));
-        }*/
 
         for (int i = 0; i < this.text.length(); i++) {
             chanedString[i] = AutomatycalyMap.get(new Character(this.text.charAt(i)));
@@ -220,7 +193,6 @@ public class MyData {
             mainKey = Arrays.copyOf(key, key.length);
             System.out.println(mainKey);
         }
-        //   System.out.println(analyse.analyseText(chanedString));
 
     }
 
