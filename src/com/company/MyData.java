@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  */
 public class MyData {
 
-    private int secondindex = 0, counterthreeGrams = 0, counterthreeGrams2 = 0;
+    private int secondindex = 0, counterthreeGrams = 0;
     private String text, originalText, bestText = "NULL";
     private char[] key, mainKey, chanedString;
     private final String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -173,7 +173,6 @@ public class MyData {
     private void createNewKey() {
         for (int i = 0; i < letters.length(); i++) {
             AutomatycalyMap.put(new Character(key[i]), new Character(letters.charAt(i)));
-            //  mapKey.put()
         }
 
         atteckText();
