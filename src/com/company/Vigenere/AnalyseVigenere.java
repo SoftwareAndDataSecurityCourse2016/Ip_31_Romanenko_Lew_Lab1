@@ -10,12 +10,14 @@ import java.util.concurrent.SynchronousQueue;
 public class AnalyseVigenere {
 
     private String text, textDevidePeriodOfLengthWord;
-    private int lengthWord, counterForPopularLetter;
-    private int[] key;
+    private int lengthWord, counterForPopularLetter = 0, indexPopularLeter = 0;
+    private char[] key;
+    private char popularChar;
 
     public AnalyseVigenere(String string, int lengthWord) {
         this.text = string;
         this.lengthWord = lengthWord;
+        key = new char[lengthWord];
     }
 
     public void startAlgorithm() {
@@ -34,6 +36,7 @@ public class AnalyseVigenere {
 
                 this.textDevidePeriodOfLengthWord = this.textDevidePeriodOfLengthWord + this.text.substring(i, i + 1);
             }
+
             frequency(this.textDevidePeriodOfLengthWord);
 
         }
@@ -54,7 +57,12 @@ public class AnalyseVigenere {
         }
 
         showFrequency(map);
+
         map.forEach((k, v) -> searchSecretword(k, v));
+        setindexPopularLeter0();
+        recordLetter(this.indexPopularLeter);
+
+        this.indexPopularLeter++;
 
     }
 
@@ -66,11 +74,27 @@ public class AnalyseVigenere {
 
     private void searchSecretword(Character k, Integer v) {
 
-
+        if (v.intValue() > counter()) {
+            this.popularChar = k.charValue();
+            this.counterForPopularLetter = v.intValue();
+        }
     }
 
-    private void counter() {
-
+    private int counter() {
+        return this.counterForPopularLetter;
     }
 
+    private void recordLetter(int index) {
+        key[index] = this.popularChar;
+    }
+
+    public char[] getKey() {
+
+        return this.key;
+    }
+
+    private void setindexPopularLeter0() {
+
+        this.counterForPopularLetter = 0;
+    }
 }

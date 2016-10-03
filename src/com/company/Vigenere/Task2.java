@@ -68,8 +68,9 @@ public class Task2 {
     public void lengthWord(int length) {
         analyse = new AnalyseVigenere(text, length);
         analyse.startAlgorithm();
-        System.out.print("frequency Of Main text");
-        analyse.frequency(this.text);
+        analyse.getKey();
+        // System.out.print("frequency Of Main text");
+        //analyse.frequency(this.text);
     }
 
     private void analyzeTextBigrams() {
